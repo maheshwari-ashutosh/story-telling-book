@@ -10,6 +10,7 @@ export declare class ChapterService {
     get currentChapter(): Chapter | null;
     get headings(): Heading[];
     fetchChapters(): Promise<Chapter[]>;
+    private getBaseUrl;
     loadChapter(chapter: Chapter): Promise<Chapter>;
     private extractHeadings;
 }
