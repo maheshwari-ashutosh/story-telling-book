@@ -53,6 +53,9 @@ export class ChapterService {
         'chapter-19-storytellers-journey.md',
       ];
       
+      // Get the base URL for the current environment
+      const baseUrl = this.getBaseUrl();
+      
       this._chapters = chapterFiles.map((filename) => {
         // Updated regex to match the new file naming convention: chapter-XX-kebab-case-title.md
         const match = filename.match(/chapter-(\d+)-(.+)\.md/);
@@ -70,7 +73,7 @@ export class ChapterService {
             number,
             title,
             filename,
-            path: `/chapters/${filename}`,
+            path: `${baseUrl}chapters/${filename}`,
           };
         }
         return null as unknown as Chapter;
@@ -84,6 +87,24 @@ export class ChapterService {
       console.error('Error fetching chapters:', error);
       throw error;
     }
+  }
+
+  // Helper method to get the base URL for the current environment
+  private getBaseUrl(): string {
+    // Check if we're running on GitHub Pages
+    const { hostname, pathname } = window.location;
+    
+    if (hostname.includes('github.io')) {
+      // Extract the repository name from the pathname
+      const pathParts = pathname.split('/');
+      if (pathParts.length > 1) {
+        const repoName = pathParts[1];
+        return `/${repoName}/`;
+      }
+    }
+    
+    // Default for local development
+    return '/';
   }
 
   public async loadChapter(chapter: Chapter): Promise<Chapter> {
