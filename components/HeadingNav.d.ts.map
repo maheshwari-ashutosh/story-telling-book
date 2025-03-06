@@ -1,0 +1,1 @@
+{"version":3,"file":"HeadingNav.d.ts","sourceRoot":"","sources":["../../src/components/HeadingNav.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,UAAU,EAAa,MAAM,KAAK,CAAC;AAE5C,OAAO,EAAE,OAAO,EAAE,MAAM,UAAU,CAAC;AAEnC,qBACa,UAAW,SAAQ,UAAU;IACxC,MAAM,CAAC,MAAM,0BAwEX;IAGF,QAAQ,EAAE,OAAO,EAAE,CAAM;IAEzB,MAAM;IAkBN,OAAO,CAAC,kBAAkB;CAO3B"}

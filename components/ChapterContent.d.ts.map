@@ -1,0 +1,1 @@
+{"version":3,"file":"ChapterContent.d.ts","sourceRoot":"","sources":["../../src/components/ChapterContent.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,UAAU,EAAa,MAAM,KAAK,CAAC;AAG5C,OAAO,EAAE,OAAO,EAAE,MAAM,UAAU,CAAC;AAEnC,qBACa,cAAe,SAAQ,UAAU;IAC5C,MAAM,CAAC,MAAM,0BAiEX;IAGF,OAAO,EAAE,OAAO,GAAG,IAAI,CAAQ;IAE/B,MAAM;IAiBN,OAAO,CAAC,iBAAiB,EAAE,GAAG,CAAC,MAAM,EAAE,OAAO,CAAC;CAMhD"}
