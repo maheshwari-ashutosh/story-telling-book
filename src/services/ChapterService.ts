@@ -30,34 +30,41 @@ export class ChapterService {
 
   public async fetchChapters(): Promise<Chapter[]> {
     try {
-      // Since we're using webpack copy plugin, we need to manually create the chapter list
+      // Use the actual file naming convention from the chapters directory
       const chapterFiles = [
-        'Chapter 1: The Enduring Power of Story: Why Narrative Shapes Our World.md',
-        'Chapter 2: Core Principles of Effective Storytelling: Universal Truths and Timeless Structures.md',
-        'Chapter 3: The Storyteller\'s Mindset: Cultivating the Essential Qualities for Narrative Mastery.md',
-        'Chapter 4: Unearthing the Narrative Seed: Idea Generation and Source Material Mastery.md',
-        'Chapter 5: Character Architectonics: Crafting Believable, Compelling, and Dynamic Figures.md',
-        'Chapter 6: Worldbuilding and Setting: Constructing Immersive and Meaningful Environments.md',
-        'Chapter 7: Plot Construction: Designing Compelling Narrative Trajectories.md',
-        'Chapter 8: Mastering Narrative Conflict: Creating Tension, Stakes, and Dramatic Drive.md',
-        'Chapter 9: Pacing and Rhythm: Controlling Narrative Flow and Audience Engagement.md',
-        'Chapter 10: Show, Don\'t Tell: Embracing Immersive and Evocative Language.md',
-        'Chapter 11: Dialogue Mastery: Crafting Authentic, Revealing, and Dynamic Conversations.md',
-        'Chapter 12: Point of View and Narrative Voice: Choosing the Right Lens for Your Story.md',
-        'Chapter 13: The Power of Scene and Setting: Structuring Narrative Moments for Maximum Impact.md',
-        'Chapter 14: Emotional Resonance: Evoking Powerful Feelings and Connecting with the Audience\'s Heart.md',
-        'Chapter 15: Theme and Meaning: Weaving Subtext and Purpose into the Narrative Tapestry.md',
-        'Chapter 16: Refining Your Narrative Style: Voice, Tone, and Genre Mastery.md',
-        'Chapter 17: Revision and Refinement: The Crucible of Narrative Excellence.md',
-        'Chapter 18: Storytelling Across Mediums: Adapting Narrative for Different Platforms.md',
-        'Chapter 19: The Storyteller\'s Journey: Building a Sustainable Practice and Sharing Your Voice.md',
+        'chapter-01-enduring-power-of-story.md',
+        'chapter-02-core-principles-of-storytelling.md',
+        'chapter-03-storytellers-mindset.md',
+        'chapter-04-unearthing-narrative-seed.md',
+        'chapter-05-character-architectonics.md',
+        'chapter-06-worldbuilding-and-setting.md',
+        'chapter-07-plot-construction.md',
+        'chapter-08-mastering-narrative-conflict.md',
+        'chapter-09-pacing-and-rhythm.md',
+        'chapter-10-show-dont-tell.md',
+        'chapter-11-dialogue-mastery.md',
+        'chapter-12-point-of-view.md',
+        'chapter-13-power-of-scene-and-setting.md',
+        'chapter-14-emotional-resonance.md',
+        'chapter-15-theme-and-meaning.md',
+        'chapter-16-refining-narrative-style.md',
+        'chapter-17-revision-and-refinement.md',
+        'chapter-18-storytelling-across-mediums.md',
+        'chapter-19-storytellers-journey.md',
       ];
       
       this._chapters = chapterFiles.map((filename) => {
-        const match = filename.match(/Chapter (\d+): (.+)\.md/);
+        // Updated regex to match the new file naming convention: chapter-XX-kebab-case-title.md
+        const match = filename.match(/chapter-(\d+)-(.+)\.md/);
         if (match) {
           const number = parseInt(match[1], 10);
-          const title = match[2];
+          // Convert kebab-case to readable title with proper capitalization
+          const kebabTitle = match[2];
+          const title = kebabTitle
+            .split('-')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+          
           return {
             id: `chapter-${number}`,
             number,
